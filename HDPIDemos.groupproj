@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F2F80358-D8D6-46BA-B591-A0E8334D7A38}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="HDPIVCLDemo\HDPIVCLDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="HDPIFMXDemo\HDPIFMXDemo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HDPIVCLDemo">
+        <MSBuild Projects="HDPIVCLDemo\HDPIVCLDemo.dproj"/>
+    </Target>
+    <Target Name="HDPIVCLDemo:Clean">
+        <MSBuild Projects="HDPIVCLDemo\HDPIVCLDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HDPIVCLDemo:Make">
+        <MSBuild Projects="HDPIVCLDemo\HDPIVCLDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="HDPIFMXDemo">
+        <MSBuild Projects="HDPIFMXDemo\HDPIFMXDemo.dproj"/>
+    </Target>
+    <Target Name="HDPIFMXDemo:Clean">
+        <MSBuild Projects="HDPIFMXDemo\HDPIFMXDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HDPIFMXDemo:Make">
+        <MSBuild Projects="HDPIFMXDemo\HDPIFMXDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HDPIVCLDemo;HDPIFMXDemo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HDPIVCLDemo:Clean;HDPIFMXDemo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HDPIVCLDemo:Make;HDPIFMXDemo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
